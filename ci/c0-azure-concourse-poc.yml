@@ -122,6 +122,7 @@ jobs:
         arg_wipe: {{arg_wipe}}
         azure_pcf_terraform_template: {{azure_pcf_terraform_template}}
         azure_subscription_id: {{azure_subscription_id}}
+        azure_environment: {{azure_environment}}
         azure_tenant_id: {{azure_tenant_id}}
         azure_service_principal_id: {{azure_service_principal_id}}
         azure_service_principal_password: {{azure_service_principal_password}}
@@ -145,6 +146,7 @@ jobs:
         arg_wipe: {{arg_wipe}}
         azure_pcf_terraform_template: {{azure_pcf_terraform_template}}
         azure_subscription_id: {{azure_subscription_id}}
+        azure_environment: {{azure_environment}}
         azure_tenant_id: {{azure_tenant_id}}
         azure_service_principal_id: {{azure_service_principal_id}}
         azure_service_principal_password: {{azure_service_principal_password}}
@@ -211,6 +213,7 @@ jobs:
       params:
         azure_pcf_terraform_template: {{azure_pcf_terraform_template}}
         azure_subscription_id: {{azure_subscription_id}}
+        azure_environment: {{azure_environment}}
         azure_tenant_id: {{azure_tenant_id}}
         azure_service_principal_id: {{azure_service_principal_id}}
         azure_service_principal_password: {{azure_service_principal_password}}
@@ -312,6 +315,7 @@ jobs:
         pcf_opsman_admin_passwd: {{pcf_opsman_admin_passwd}}
         azure_pcf_terraform_template: {{azure_pcf_terraform_template}}
         azure_subscription_id: {{azure_subscription_id}}
+        azure_environment: {{azure_environment}}
         azure_tenant_id: {{azure_tenant_id}}
         azure_service_principal_id: {{azure_service_principal_id}}
         azure_service_principal_password: {{azure_service_principal_password}}
