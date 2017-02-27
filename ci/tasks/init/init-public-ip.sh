@@ -36,6 +36,7 @@ terraform ${1} \
   -var "client_secret=${azure_service_principal_password}" \
   -var "tenant_id=${azure_tenant_id}" \
   -var "location=${azure_region}" \
+  -var "environment=${azure_environment}" \
   -var "env_name=${azure_terraform_prefix}" \
   -var "azure_terraform_vnet_cidr=${azure_terraform_vnet_cidr}" \
   -var "azure_terraform_subnet_infra_cidr=${azure_terraform_subnet_infra_cidr}" \
