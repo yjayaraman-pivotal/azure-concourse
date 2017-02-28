@@ -24,7 +24,7 @@ echo "Found SubnetID=${ert_subnet}"
 
 
 # Install Terraform cli until we can update the Docker image
-wget $(wget -q -O- https://www.terraform.io/downloads.html | grep linux_amd64 | awk -F '"' '{print$2}') -O /tmp/terraform.zip
+wget $(wget -q -O- https://www.terraform.io/downloads.html | grep linux_arm | awk -F '"' '{print$2}') -O /tmp/terraform.zip
 if [ -d /opt/terraform ]; then
   rm -rf /opt/terraform
 fi
