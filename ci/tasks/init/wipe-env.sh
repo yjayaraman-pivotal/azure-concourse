@@ -11,7 +11,10 @@ if [ $arg_wipe == "wipe" ];
                 exit 0
 fi
 
+echo "Logging in using service principal $azure_service_principal_id "
 azure login --environment "AzureUSGovernment" --service-principal -u ${azure_service_principal_id} -p ${azure_service_principal_password} --tenant ${azure_tenant_id}
+
+echo "Setting subscription to $azure_subscription_id "
 azure account set ${azure_subscription_id}
 
 if [[ ! -z ${azure_multi_resgroup_pcf} && ${azure_pcf_terraform_template} == "c0-azure-multi-res-group" ]]; then
