@@ -9,6 +9,7 @@ variable "env_short_name" {
   description = "Used for creating storage accounts. Must be a-z only, no longer than 10 characters"
 }
 
+variable "environment" {}
 variable "subscription_id" {}
 variable "client_id" {}
 variable "client_secret" {}
