@@ -12,7 +12,12 @@ fi
 
 # Get ert subnet if multi-resgroup
 
-azure login --service-principal -u ${azure_service_principal_id} -p ${azure_service_principal_password} --tenant ${azure_tenant_id} --environment "AzureUSGovernment"
+echo "Logging in using service principal $azure_service_principal_id "
+azure login --environment "AzureUSGovernment" --service-principal -u ${azure_service_principal_id} -p ${azure_service_principal_password} --tenant ${azure_tenant_id}
+
+echo "Setting subscription to $azure_subscription_id "
+azure account set ${azure_subscription_id}
+
 ert_subnet_cmd="azure network vnet subnet list -g network-core  -e vnet-pcf --json | jq '.[] | select(.name == \"ert\") | .id' | tr -d '\"'"
 ert_subnet=$(eval $ert_subnet_cmd)
 echo "Found SubnetID=${ert_subnet}"
