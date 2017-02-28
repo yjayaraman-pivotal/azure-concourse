@@ -24,7 +24,7 @@ echo "Found SubnetID=${ert_subnet}"
 
 
 # Install Terraform cli until we can update the Docker image
-wget $(wget -q -O- https://www.terraform.io/downloads.html | grep linux_arm | awk -F '"' '{print$2}') -O /tmp/terraform.zip
+wget $(wget -q -O- https://www.terraform.io/downloads.html | grep linux_amd64 | awk -F '"' '{print$2}') -O /tmp/terraform.zip
 if [ -d /opt/terraform ]; then
   rm -rf /opt/terraform
 fi
@@ -35,6 +35,24 @@ export PATH=/opt/terraform/terraform:$PATH
 
 function fn_terraform {
 
+echo "terraform ${1} \
+  -var \"subscription_id=${azure_subscription_id}\" \
+  -var \"client_id=${azure_service_principal_id}\" \
+  -var \"client_secret=${azure_service_principal_password}\" \
+  -var \"tenant_id=${azure_tenant_id}\" \
+  -var \"location=${azure_region}\" \
+  -var \"environment=${azure_environment}\" \
+  -var \"env_name=${azure_terraform_prefix}\" \
+  -var \"azure_terraform_vnet_cidr=${azure_terraform_vnet_cidr}\" \
+  -var \"azure_terraform_subnet_infra_cidr=${azure_terraform_subnet_infra_cidr}\" \
+  -var \"azure_terraform_subnet_ert_cidr=${azure_terraform_subnet_ert_cidr}\" \
+  -var \"azure_terraform_subnet_services1_cidr=${azure_terraform_subnet_services1_cidr}\" \
+  -var \"azure_terraform_subnet_dynamic_services_cidr=${azure_terraform_subnet_dynamic_services_cidr}\" \
+  -var \"ert_subnet_id=${ert_subnet}\" \
+  -var \"azure_multi_resgroup_network=${azure_multi_resgroup_network}\" \
+  -var \"azure_multi_resgroup_pcf=${azure_multi_resgroup_pcf}\" \
+  azure-concourse/terraform/${azure_pcf_terraform_template}/init"
+  
 terraform ${1} \
   -var "subscription_id=${azure_subscription_id}" \
   -var "client_id=${azure_service_principal_id}" \
